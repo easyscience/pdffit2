@@ -60,6 +60,7 @@ jobs:
       if: matrix.os == 'ubuntu-latest' || matrix.os == 'windows-latest'
       run: |
         conda install gsl -c conda-forge
+        pip install "numpy<2.0"
         pip install twine
         pip install wheel
         pip install setuptools
@@ -73,7 +74,6 @@ jobs:
 
     - name: Run tests
       run: |
-        pip install "numpy<2.0"
         python setup.py install
         python conda-recipe/run_test.py
 
